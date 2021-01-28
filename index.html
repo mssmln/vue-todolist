@@ -11,38 +11,46 @@
 </head>
 <body>
   <div id="app" class="container">
+    <!-- area di input  -->
     <div class="fill-in">
-      <input type="text" placeholder="type sth down">
-      <button type="button" name="button">Fill it in</button>
+      <!-- col keyup al press di enter parte la fun addToDo, il v-model serve per registrare il dato -->
+      <input type="text" placeholder="type sth down" @keyup.enter="addToDo" v-model="newToDo">
+      <!-- v-on e @ sono intercambiabili -->
+      <button type="button" name="button" @click="addToDo">Fill it in</button>
     </div>
+    <!-- /area di input  -->
+
+    <!-- lista dei todo -->
     <div class="todo">
       <ol>
+        <!-- nel v-for serve index per poterlo usare con la fun removeToDo -->
         <li v-for="(todo,index) in todos">
           {{ todo }}
           <i class="fas fa-times" @click="removeToDo(index)"></i>
         </li>
       </ol>
     </div>
+    <!-- /lista dei todo -->
 
+
+    <!-- lista dei todo eliminati -->
     <div class="deleted">
-      <h3>items you have cancelled</h3>
+      <h3>items you have cancelled
+        <i class="fas fa-trash" @click="empty"></i>
+      </h3>
       <ul>
+        <!-- anche qui serve index per il funzionamento delle funzioni -->
         <li v-for="(deleted,index) in removed">
           {{ deleted }}
-          <i class="fas fa-times"></i>
+          <i class="fas fa-times" @click="deleteToDo(index)"></i>
           <i class="fas fa-window-restore" @click="restoreToDo(index)"></i>
         </li>
       </ul>
     </div>
-
-
-
-
-
-
-
-
+    <!-- /lista dei todo eliminati -->
   </div>
+
+
   <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>

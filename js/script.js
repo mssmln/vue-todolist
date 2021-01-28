@@ -15,7 +15,7 @@ var app = new Vue({
     ],
     removed: [], // per gli elementi cancellati
     newToDo: '', // da sovrascrivere nella casella input col v-model
-    confirm: confirm("are you sure you want to delete it?"),
+    // confirm: confirm("are you sure you want to delete it?"), // messo qua parte ad ogni f5 della pagina
   },
   methods: {
     addToDo(){ // da input
@@ -24,14 +24,21 @@ var app = new Vue({
       console.log(this.newToDo);
     },
     removeToDo(index){ // dobbiamo accedere all'index per capire quale deve essere rimosso
-      this.confirm == true ? (
-        this.removed.push(this.todos[index]), // aggiungiamo a removed l'item cancellato
-        console.log(this.removed),
-        this.todos.splice(index,1), // rimuoviamo l'item specifico col click
-        console.log(this.todos)
-      ) : (
-        ''
-      );
+      // var confirm = confirm("are you sure you want to delete it?"); // così non riesco ad usarlo
+      if (confirm("are you sure you want to delete it?") == true) {
+        this.removed.push(this.todos[index]);
+        console.log(this.removed);
+        this.todos.splice(index,1);
+        console.log(this.todos);
+      }
+      // (confirm == true) ? (
+      //   this.removed.push(this.todos[index]), // aggiungiamo a removed l'item cancellato
+      //   console.log(this.removed),
+      //   this.todos.splice(index,1), // rimuoviamo l'item specifico col click
+      //   console.log(this.todos)
+      // ) : (
+      //   ''
+      // );
     },
     restoreToDo(index){ // serve ancora index per capire quale è, restore verso todos
       this.todos.push(this.removed[index]);

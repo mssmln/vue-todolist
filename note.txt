@@ -1,0 +1,3 @@
+non è possibile usare Vue nei tag i con after e before del css, necessariamente nel html.
+
+da risolvere il confirm che parte al caricamento della pagina in removeToDo funzione 

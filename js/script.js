@@ -15,6 +15,7 @@ var app = new Vue({
     ],
     removed: [], // per gli elementi cancellati
     newToDo: '', // da sovrascrivere nella casella input col v-model
+    confirm: confirm("are you sure you want to delete it?"),
   },
   methods: {
     addToDo(){ // da input
@@ -23,10 +24,14 @@ var app = new Vue({
       console.log(this.newToDo);
     },
     removeToDo(index){ // dobbiamo accedere all'index per capire quale deve essere rimosso
-      this.removed.push(this.todos[index]); // aggiungiamo a removed l'item cancellato
-      console.log(this.removed);
-      this.todos.splice(index,1); // rimuoviamo l'item specifico col click
-      console.log(this.todos);
+      this.confirm == true ? (
+        this.removed.push(this.todos[index]), // aggiungiamo a removed l'item cancellato
+        console.log(this.removed),
+        this.todos.splice(index,1), // rimuoviamo l'item specifico col click
+        console.log(this.todos)
+      ) : (
+        ''
+      );
     },
     restoreToDo(index){ // serve ancora index per capire quale è, restore verso todos
       this.todos.push(this.removed[index]);

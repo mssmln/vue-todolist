@@ -23,15 +23,22 @@ var app = new Vue({
       this.newToDo = ''; // per riazzerarla e far comparire il placeholder
       console.log(this.newToDo);
     },
+    editToDo(index){
+      console.log(this.todos[index]);
+      let edit = prompt('edit your todo');
+      this.todos.
+    },
     removeToDo(index){ // dobbiamo accedere all'index per capire quale deve essere rimosso
-      // var confirm = confirm("are you sure you want to delete it?"); // così non riesco ad usarlo
-      if (confirm("are you sure you want to delete it?") == true) {
+      const conferma = confirm("are you sure you want to delete it?"); // non puoi chiamarla confirm
+      if (conferma) { // non serve == true, if la da già per true
         this.removed.push(this.todos[index]);
         console.log(this.removed);
         this.todos.splice(index,1);
         console.log(this.todos);
       }
-      // (confirm == true) ? (
+
+      // l'operatore ternario usalo solo quando usi il valore di ritorno
+      // (conferma) ? (
       //   this.removed.push(this.todos[index]), // aggiungiamo a removed l'item cancellato
       //   console.log(this.removed),
       //   this.todos.splice(index,1), // rimuoviamo l'item specifico col click
@@ -39,6 +46,7 @@ var app = new Vue({
       // ) : (
       //   ''
       // );
+
     },
     restoreToDo(index){ // serve ancora index per capire quale è, restore verso todos
       this.todos.push(this.removed[index]);

@@ -27,6 +27,7 @@
         <li v-for="(todo,index) in todos">
           {{ todo }}
           <i class="fas fa-times" @click="removeToDo(index)"></i>
+          <i class="fas fa-edit" @click="editToDo(index)"></i>
         </li>
       </ol>
     </div>

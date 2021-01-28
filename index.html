@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>todo list con Vue</title>
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="fill-in">
+      <input type="text" placeholder="type sth down">
+      <button type="button" name="button">Fill it in</button>
+    </div>
+    <div class="todo">
+      <ol>
+        <li v-for="(todo,index) in todos">
+          {{ todo }}
+          <i class="fas fa-times" @click="removeToDo(index)"></i>
+        </li>
+      </ol>
+    </div>
+
+    <div class="deleted">
+      <h3>items you have cancelled</h3>
+      <ul>
+        <li v-for="(deleted,index) in removed">
+          {{ deleted }}
+          <i class="fas fa-times"></i>
+          <i class="fas fa-window-restore" @click="restoreToDo(index)"></i>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+</html>

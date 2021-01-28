@@ -22,6 +22,9 @@
 
     <!-- lista dei todo -->
     <div class="todo">
+      <h3>move all items to the bin
+        <i class="fas fa-trash" @click="moveAllToBin"></i>
+      </h3>
       <ol>
         <!-- nel v-for serve index per poterlo usare con la fun removeToDo -->
         <li v-for="(todo,index) in todos">

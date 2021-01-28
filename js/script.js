@@ -23,11 +23,11 @@ var app = new Vue({
       this.newToDo = ''; // per riazzerarla e far comparire il placeholder
       console.log(this.newToDo);
     },
-    editToDo(index){
-      console.log(this.todos[index]);
-      let edit = prompt('edit your todo');
-      this.todos.
-    },
+    // editToDo(index){
+    //   console.log(this.todos[index]);
+    //   let edit = prompt('edit your todo');
+    //   this.todos.
+    // },
     removeToDo(index){ // dobbiamo accedere all'index per capire quale deve essere rimosso
       const conferma = confirm("are you sure you want to delete it?"); // non puoi chiamarla confirm
       if (conferma) { // non serve == true, if la da già per true
@@ -47,6 +47,11 @@ var app = new Vue({
       //   ''
       // );
 
+    },
+    moveAllToBin(){ // li sposta tutti in un colpo nel cestino
+      this.removed.push(...this.todos); // operatore spread per pushare tutto il contenuto dell'array
+      console.log(this.removed);
+      this.todos.splice(0);
     },
     restoreToDo(index){ // serve ancora index per capire quale è, restore verso todos
       this.todos.push(this.removed[index]);

@@ -26,8 +26,13 @@ var app = new Vue({
     editToDo(index){
       console.log(this.todos[index]);
       let edit = prompt('edit your todo');
-      this.todos[index] = edit;
       console.log(edit);
+      this.todos[index] = edit;
+      console.log(this.todos[index]);
+      if (this.todos[index].length > 0) {
+
+        this.todos.splice(index,0);
+      }
     },
     removeToDo(index){ // dobbiamo accedere all'index per capire quale deve essere rimosso
       const conferma = confirm("are you sure you want to delete it?"); // non puoi chiamarla confirm

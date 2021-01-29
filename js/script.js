@@ -23,11 +23,12 @@ var app = new Vue({
       this.newToDo = ''; // per riazzerarla e far comparire il placeholder
       console.log(this.newToDo);
     },
-    // editToDo(index){
-    //   console.log(this.todos[index]);
-    //   let edit = prompt('edit your todo');
-    //   this.todos.
-    // },
+    editToDo(index){
+      console.log(this.todos[index]);
+      let edit = prompt('edit your todo');
+      this.todos[index] = edit;
+      console.log(edit);
+    },
     removeToDo(index){ // dobbiamo accedere all'index per capire quale deve essere rimosso
       const conferma = confirm("are you sure you want to delete it?"); // non puoi chiamarla confirm
       if (conferma) { // non serve == true, if la da già per true
@@ -57,11 +58,15 @@ var app = new Vue({
       this.todos.push(this.removed[index]);
       this.removed.splice(index,1);
     },
+    restoreAllToDo(){
+      this.todos.push(...this.removed);
+      this.removed.splice(0);
+    },
     deleteToDo(index){ // lo rimuove dalla lista dei cancellati
       this.removed.splice(index,1);
     },
     empty(){
-      this.removed.splice(0); // lo svuota completamente partendo dall'indice 0
+      this.removed.splice(0); // lo svuota completamente partendo dall'indice 0, oppure uguale all'insieme vuoto
     },
   }
 });

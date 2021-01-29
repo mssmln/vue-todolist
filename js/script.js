@@ -27,10 +27,10 @@ var app = new Vue({
       console.log(this.todos[index]);
       let edit = prompt('edit your todo');
       console.log(edit);
-      this.todos[index] = edit;
-      console.log(this.todos[index]);
-      if (this.todos[index].length > 0) {
-
+      if (edit == null || edit == '') { // anche undefined al posto di null andava
+        alert('nothing changed');
+      } else {
+        this.todos[index] = edit;
         this.todos.splice(index,0);
       }
     },
